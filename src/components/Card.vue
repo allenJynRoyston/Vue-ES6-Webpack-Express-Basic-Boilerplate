@@ -3,15 +3,15 @@
     .image
       img(src='../assets/images/logo.png')
     .content
-      a.header Kristy
+      a.header Hello World
       .meta
-        span.date Joined in 2013
+        span.date 11/11/2017
       .description
-        | Kristy is an art director living in New York.
+        | Lorem ipsum
     .extra.content
       a
         i.user.icon
-        |       22 Friends
+        |  Lorem ipsum
 </template>
 
 <script>

@@ -2,20 +2,13 @@ const express = require('express')
 const request = require('request')
 const fs = require('fs')
 const path = require('path')
-const bundle = fs.readFileSync(path.join(__dirname, './dist/server.js'), 'utf8')
-const renderer = require('vue-server-renderer').createBundleRenderer(bundle)
-const index = fs.readFileSync(path.join(__dirname, './index.html'), 'utf8')
 const compression = require('compression');
 const app = express()
-
-// I'M SO EXPOOOSEED!!!
-const openWeatherAppKey = "661e80346d232c78158726c9b7b62524";
-
 
 // setup compression
 app.use(compression())
 
-// set cache headers
+// set cache headers / expiration headers
 app.use(function (req, res, next) {
   let day = (86400000 / 1000),
       numberOfDays = 7;
@@ -23,31 +16,20 @@ app.use(function (req, res, next) {
   next()
 })
 
-// read from folder /dist
+// allows server to fetch/read from these folders
 app.use('/src', express.static(path.join(__dirname, './src')))
 app.use('/dist', express.static(path.join(__dirname, './dist')))
 app.use('/node_modules', express.static(path.join(__dirname, './node_modules')))
 
-// for live data
-app.get('/api/forecast/:city', (req, res) => {
-  request("http://api.openweathermap.org/data/2.5/forecast?q=" + req.params.city + "&mode=json&appid=" + openWeatherAppKey, function (error, response, body) {
-    res.send(JSON.parse(body))
-  })
+// for routes / api
+app.get('/api/test', (req, res) => {
+  res.send("<h1>API TEST</h1>")
 })
 
+// default route
 app.get('*', (req, res) => {
-    renderer.renderToString({},
-        (err, html) => {
-          try{
-            res.send(index.replace('<div id="app"></div>', html))
-          }
-          catch (err) {
-            return res.sendStatus(500)
-          }
-        }
-    )
+  res.send(fs.readFileSync(path.join(__dirname, './index.html'), 'utf8'))
 })
-
 
 // Serve the files on port 3000.
 app.listen(process.env.PORT || 3000, function () {

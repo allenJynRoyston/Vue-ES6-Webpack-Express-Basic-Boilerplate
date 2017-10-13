@@ -26,7 +26,7 @@ gulp.task('start-server', function (cb) {
 
 //--------------------------------------
 gulp.task('rebuild-webpack', shell.task([
-  'npm run builddev && npm run buildserver'
+  'npm run build'
 ]))
 //--------------------------------------
 
