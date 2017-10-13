@@ -2,7 +2,7 @@
 
 ### Install instructions:
 ```sh
-$ git clone https://github.com/allenRoyston/weather-forecast-demo.git
+$ git clone https://github.com/allenRoyston/vue-es6-webpack-express-boilerplate.git
 $ cd weather-forecast-demo
 $ npm install
 $ gulp build
