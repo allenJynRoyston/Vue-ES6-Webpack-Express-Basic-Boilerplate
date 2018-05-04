@@ -1,2 +1,2 @@
-import '../../../node_modules/jquery/dist/jquery.min.js';
-import '../../../node_modules/semantic-ui/dist/semantic.min.js';
+// import other scripts as such:
+// import '../../../node_modules/jquery/dist/jquery.min.js';

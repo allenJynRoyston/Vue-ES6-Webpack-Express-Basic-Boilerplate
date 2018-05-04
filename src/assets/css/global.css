@@ -1,4 +1,5 @@
-@import '../../../node_modules/semantic-ui/dist/semantic.min.css';
+/* import other CSS files as such: */
+/* @import '../../../node_modules/semantic-ui/dist/semantic.min.css'; */
 
 #app{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
